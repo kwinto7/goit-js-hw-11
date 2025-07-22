@@ -25,7 +25,11 @@ export function getImagesByQuery(query) {
           title: "",
           message: "Sorry, there are no images matching your search query. Please try again!",
           position: "topRight",
-          timeout: 4000
+          timeout: 4000,
+          close: false,
+          maxWidth: 300,
+          messageColor: "#fff",
+          color: "#e23232"
         });
         return;
       }
