@@ -3,12 +3,7 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 const gallery = document.querySelector(".gallery");
-
-const loader = document.createElement("span");
-loader.className = "loader";
-loader.classList.add("hidden"); 
-loader.textContent = "Loading images. Please wait..."
-document.body.appendChild(loader);
+const loader = document.querySelector(".loader");
 
 const loaderStyles = document.createElement("style");
 loaderStyles.textContent = `
