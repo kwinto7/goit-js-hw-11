@@ -6,7 +6,7 @@ const gallery = document.querySelector(".gallery");
 
 const loader = document.createElement("span");
 loader.className = "loader";
-loader.classList = "hidden";
+loader.classList.add("hidden"); 
 loader.textContent = "Loading images. Please wait..."
 document.body.appendChild(loader);
 
