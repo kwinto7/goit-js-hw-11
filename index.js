@@ -1,4 +1,4 @@
-import{S as f,a as m,i as y}from"./assets/vendor-BhSeNu3C.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))l(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const n of t.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&l(n)}).observe(document,{childList:!0,subtree:!0});function r(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function l(e){if(e.ep)return;e.ep=!0;const t=r(e);fetch(e.href,t)}})();const h=document.querySelector(".gallery"),i=document.querySelector(".loader"),d=document.createElement("style");d.textContent=`
+import{S as f,a as h,i as a}from"./assets/vendor-rOMtvQ2t.js";(function(){const i=document.createElement("link").relList;if(i&&i.supports&&i.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))l(e);new MutationObserver(e=>{for(const o of e)if(o.type==="childList")for(const n of o.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&l(n)}).observe(document,{childList:!0,subtree:!0});function t(e){const o={};return e.integrity&&(o.integrity=e.integrity),e.referrerPolicy&&(o.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?o.credentials="include":e.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function l(e){if(e.ep)return;e.ep=!0;const o=t(e);fetch(e.href,o)}})();const u=document.querySelector(".gallery"),r=document.querySelector(".loader"),m=document.createElement("style");m.textContent=`
  .loader {
   color: #FFF;
   display: inline-block;
@@ -33,20 +33,13 @@ display: none;
     box-shadow: 10px 0 white, 20px 0 white;
   }
 }
-`;document.head.appendChild(d);function g(s){return s.map(({previewURL:o,tags:r,likes:l,views:e,comments:t,downloads:n,largeImageURL:u})=>`
-    <li class="gallery-item" style="border: 1px solid #808080">
-      <a class="gallery-link" href="${u}">
-        <img class="gallery-img" src="${o}" alt="${r}" style="
-          width: 360px;
-          height: 200px;
-          object-fit: cover;"/>
+`;document.head.appendChild(m);function y(s){return s.map(({webformatURL:i,tags:t,likes:l,views:e,comments:o,downloads:n,largeImageURL:p})=>`
+    <li class="gallery-item">
+      <a class="gallery-link" href="${p}">
+        <img class="gallery-img" src="${i}" alt="${t}"/>
       </a>
-      <div class="item-description-wrap" 
-        style="
-          display: flex; 
-          justify-content: space-around; 
-          font-size: 12px">
-        <div class="description-item" style="">
+      <div class="item-description-wrap">
+        <div class="description-item">
           <h3 class="item-title">Likes</h3>
           <p class="item-text">${l}</p>
         </div>
@@ -56,7 +49,7 @@ display: none;
         </div>
         <div class="description-item">
           <h3 class="item-title">Comments</h3>
-          <p class="item-text">${t}</p>
+          <p class="item-text">${o}</p>
         </div>
         <div class="description-item">
           <h3 class="item-title">Downloads</h3>
@@ -64,5 +57,5 @@ display: none;
         </div>
       </div>
     </li>
-  `).join("")}function x(){i.classList.remove("hidden"),i.style.position="fixed",i.style.top="50%",i.style.left="50%",i.style.transform="translate(-50%, -50%)",i.style.zIndex="9999",i.style.backgroundColor="rgba(0, 0, 0, 0.2)",i.style.padding="20px",i.style.borderRadius="50%"}function b(){i.classList.add("hidden")}let a=null;function v(){a?a.refresh():a=new f(".gallery a",{captionData:"alt",captionDelay:250})}function $(){h.innerHTML=""}const L="51435495-8626d86cd8f20f3f9ed789055",w="https://pixabay.com/api/",S=document.querySelector(".gallery");function q(s){x();const o={key:L,q:s,image_type:"photo",orientation:"horizontal",safesearch:"true"};return m.get(w,{params:o}).then(({data:r})=>{if(!r.hits||r.hits.length===0){y.error({title:"",message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight",timeout:4e3,close:!1,maxWidth:300,messageColor:"#fff",color:"#e23232"});return}S.insertAdjacentHTML("beforeend",g(r.hits)),v()}).catch(r=>{console.log(r)}).finally(()=>{b()})}const O=document.querySelector("body"),p=document.querySelector(".form"),c=document.querySelector(".form input"),j=document.querySelector(".form button"),C=document.querySelector(".gallery");p.addEventListener("submit",z);function z(s){s.preventDefault();const o=c.value.trim();if(!o){alert("Порожній запит"),hideLoader();return}$(),c.value="",q(o)}Object.assign(O.style,{textAlign:"center"});Object.assign(p.style,{marginTop:"36px",marginBottom:"24px",fontFamily:"Montserrat, sans-serif"});Object.assign(c.style,{width:"272px",height:"36px",borderRadius:"4px",border:"1px solid #808080",paddingLeft:"16px"});Object.assign(j.style,{width:"91px",height:"40px",fontWeight:500,borderRadius:"8px",backgroundColor:"#4e75ff",border:"none",color:"#fff"});Object.assign(C.style,{display:"flex",flexWrap:"wrap",gap:"24px",justifyContent:"center"});
+  `).join("")}function g(){r.classList.remove("hidden"),r.style.position="fixed",r.style.top="50%",r.style.left="50%",r.style.transform="translate(-50%, -50%)",r.style.zIndex="9999",r.style.backgroundColor="rgba(0, 0, 0, 0.2)",r.style.padding="20px",r.style.borderRadius="50%"}function x(){r.classList.add("hidden")}let c=null;function b(s){const i=y(s);u.insertAdjacentHTML("beforeend",i),c?c.refresh():c=new f(".gallery a",{captionData:"alt",captionDelay:250})}function v(){u.innerHTML=""}const w="51435495-8626d86cd8f20f3f9ed789055",L="https://pixabay.com/api/";document.querySelector(".gallery");function S(s){const i={key:w,q:s,image_type:"photo",orientation:"horizontal",safesearch:"true"};return g(),h.get(L,{params:i}).then(t=>t.data).catch(t=>{throw console.error("Fetch error",t),t}).finally(()=>{x()})}document.querySelector("body");const q=document.querySelector(".form"),d=document.querySelector(".form input");document.querySelector(".form button");document.querySelector(".gallery");q.addEventListener("submit",$);function $(s){s.preventDefault();const i=d.value.trim();if(!i){a.warning({title:"",message:"Порожній запит!",position:"topRight",timeout:3e3});return}v(),S(i).then(t=>{if(!t.hits||t.hits.length===0){a.error({title:"",message:"Зображення не знайдені. Спробуйте інший запит.",position:"topRight",timeout:4e3,close:!1,maxWidth:300,messageColor:"#fff",color:"#e23232"});return}b(t.hits)}).catch(t=>{a.error({title:"",message:"Помилка запиту. Спробуйте пізніше.",position:"topRight",timeout:4e3})}).finally(()=>{d.value=""})}
 //# sourceMappingURL=index.js.map
