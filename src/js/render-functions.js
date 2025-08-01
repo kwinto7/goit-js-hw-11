@@ -45,20 +45,13 @@ display: none;
 document.head.appendChild(loaderStyles);
 
 export function createGallery(images) { 
-  return images.map(({ previewURL, tags, likes, views, comments, downloads, largeImageURL }) => `
-    <li class="gallery-item" style="border: 1px solid #808080">
+  return images.map(({ webformatURL, tags, likes, views, comments, downloads, largeImageURL }) => `
+    <li class="gallery-item">
       <a class="gallery-link" href="${largeImageURL}">
-        <img class="gallery-img" src="${previewURL}" alt="${tags}" style="
-          width: 360px;
-          height: 200px;
-          object-fit: cover;"/>
+        <img class="gallery-img" src="${webformatURL}" alt="${tags}"/>
       </a>
-      <div class="item-description-wrap" 
-        style="
-          display: flex; 
-          justify-content: space-around; 
-          font-size: 12px">
-        <div class="description-item" style="">
+      <div class="item-description-wrap">
+        <div class="description-item">
           <h3 class="item-title">Likes</h3>
           <p class="item-text">${likes}</p>
         </div>
@@ -96,6 +89,20 @@ export function hideLoader() {
 }
 
 let lightbox = null;
+
+export function renderGallery(images) { 
+  const markup = createGallery(images);
+  gallery.insertAdjacentHTML("beforeend", markup);
+    if (lightbox) {
+    lightbox.refresh()
+    } else { 
+      lightbox = new SimpleLightbox(".gallery a", {
+        captionData: "alt",
+        captionDelay: 250,
+      });
+    }
+}
+
 
 export function updateLightBox() { 
   if (lightbox) {

@@ -1,9 +1,12 @@
 
 
 import { getImagesByQuery } from "./js/pixabay-api"
-import { clearGallery } from "./js/render-functions";
-
-
+import {
+  clearGallery,
+  renderGallery
+} from "./js/render-functions";
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 
 
 const body = document.querySelector("body");
@@ -18,55 +21,53 @@ form.addEventListener("submit", handleSubmit)
 
 function handleSubmit(event) { 
   event.preventDefault();
-  const input_user_text = input.value.trim()
-  if (!input_user_text) {
-    alert("Порожній запит");
-    hideLoader();
+
+  const inputUserText = input.value.trim()
+  if (!inputUserText) {
+    iziToast.warning({
+    title: '',
+    message: 'Порожній запит!',
+    position: 'topRight',
+    timeout: 3000,
+  });
     return;
   }
+
   clearGallery();
-  input.value = "";
-  getImagesByQuery(input_user_text);
+
+  getImagesByQuery(inputUserText)
+    .then(data => { 
+      if (!data.hits || data.hits.length === 0) {
+        iziToast.error({
+          title: "",
+          message: "Зображення не знайдені. Спробуйте інший запит.",
+          position: "topRight",
+          timeout: 4000,
+          close: false,
+          maxWidth: 300,
+          messageColor: "#fff",
+          color: "#e23232"
+        });
+        return;
+      }
+
+      renderGallery(data.hits);
+    })
+    .catch(error => {
+      iziToast.error({
+        title: "",
+        message: "Помилка запиту. Спробуйте пізніше.",
+        position: "topRight",
+        timeout: 4000,
+      });
+    })
+    .finally(() => {
+      input.value = "";
+    });
 }
 
 
-Object.assign(body.style, {
-  textAlign: "center",
-})
 
-Object.assign(form.style, {
-  marginTop: `${36}px`,
-  marginBottom: `${24}px`,
-  fontFamily: "Montserrat, sans-serif",
-})
 
-Object.assign(input.style, {
-  width: `${272}px`,
-  height: `${36}px`,
-  borderRadius: `${4}px`,
-  border: "1px solid #808080",
-  paddingLeft: `${16}px`,
-})
-
-Object.assign(button.style, {
-  width: `${91}px`,
-  height: `${40}px`,    
-  fontWeight: 500,
-  borderRadius: `${8}px`,
-  backgroundColor: "#4e75ff",
-  border: "none",
-  color: "#fff"
-})
-
-Object.assign(gallery.style, {
-  display: "flex",
-  flexWrap: "wrap",
-  gap: `${24}px`,
-  justifyContent: "center" 
-})
-
-// Object.assign(galleryItem.style, {
-//   border: "1px solid #808080",
-// })
 
 
